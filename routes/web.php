@@ -12,5 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $articles = \App\Article::with('user')->get();
+    return view('articles', compact('articles'));
+});
+
+Route::get('/profile/{id}', function ($id) {
+    $user= \App\User::with('address', 'articles', 'roles')->findOrFail($id);
+    return view('profile', compact('user'));
 });

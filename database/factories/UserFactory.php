@@ -1,6 +1,9 @@
 <?php
 
 use App\User;
+use App\Article;
+use App\Address;
+use App\Role;
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
 
@@ -22,5 +25,26 @@ $factory->define(User::class, function (Faker $faker) {
         'email_verified_at' => now(),
         'password' => bcrypt(123456),
         'remember_token' => Str::random(10),
+    ];
+});
+$factory->define(Article::class, function (Faker $faker) {
+    return [
+        'user_id' => 2,
+        'title' => $faker->sentence(3),
+        'body' => $faker->sentence(8),
+    ];
+});
+
+$factory->define(Address::class, function (Faker $faker) {
+    return [
+        'user_id' => 2,
+        'country' => $faker->country,
+    ];
+});
+
+$factory->define(Role::class, function (Faker $faker) {
+    return [
+        'user_id' => 2,
+        'role_id' => 1,
     ];
 });
