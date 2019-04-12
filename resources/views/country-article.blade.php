@@ -9,5 +9,6 @@
 @foreach($country->articles as $article)
     <h1>{{ $article->title }}  <small>Posted by {{$article->user->name}}</small></h1>
     <p>{{ $article->body }}</p> <hr>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid amet, deleniti deserunt eligendi expedita in incidunt, maxime nulla, perferendis reiciendis sapiente sequi tempore. Aspernatur beatae ex expedita modi optio tempora.
 @endforeach
 

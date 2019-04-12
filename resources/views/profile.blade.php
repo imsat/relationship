@@ -27,3 +27,9 @@
     @endforeach
     </tbody>
 </table>
+
+<h2>Comments:</h2>
+{{--{{$user->comments()->with('user')->get()->pluck('user')}}--}}
+@foreach($user->comments as $comment)
+    <p>{{$comment->body}}</p>
+@endforeach
