@@ -4,9 +4,11 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Address extends Model
+class Country extends Model
 {
+    protected $guarded = [];
+
     public function user(){
-        return $this->belongsTo('App\User');
+        return $this->hasOne('App\User');
     }
 }

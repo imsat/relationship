@@ -1,7 +1,12 @@
 <h1>{{$user->name}}</h1>
 <p>
-    <strong>Country: </strong> {{$user->address->country}} <br>
-    <strong>Roles: </strong> @foreach($user->roles as $role) {{$role->name}} @endforeach
+    <strong>Country: </strong> {{$user->country->name}} <br>
+    <strong>Roles: </strong>
+    <ul>
+        @foreach($user->roles as $role)
+            <li>{{$role->name}}</li>
+        @endforeach
+    </ul>
 </p>
 <table >
    <thead>

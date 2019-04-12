@@ -2,7 +2,7 @@
 
 use App\User;
 use App\Article;
-use App\Address;
+use App\Country;
 use App\Role;
 use Illuminate\Support\Str;
 use Faker\Generator as Faker;
@@ -35,10 +35,10 @@ $factory->define(Article::class, function (Faker $faker) {
     ];
 });
 
-$factory->define(Address::class, function (Faker $faker) {
+
+$factory->define(Country::class, function (Faker $faker) {
     return [
-        'user_id' => 2,
-        'country' => $faker->country,
+        'name' => $faker->country,
     ];
 });
 

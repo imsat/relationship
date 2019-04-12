@@ -17,6 +17,10 @@ Route::get('/', function () {
 });
 
 Route::get('/profile/{id}', function ($id) {
-    $user= \App\User::with('address', 'articles', 'roles')->findOrFail($id);
+    $user= \App\User::with('country', 'articles', 'roles')->findOrFail($id);
     return view('profile', compact('user'));
 });
+Route::get('/roles/{role}', function (\App\Role $role) {
+    return view('roles', compact('role'));
+});
+

@@ -40,9 +40,9 @@ class User extends Authenticatable
     public function articles(){
         return $this->hasMany('App\Article');
     }
-    public function address()
+    public function country()
     {
-        return $this->hasOne('App\Address');
+        return $this->belongsTo('App\Country');
     }
     public function roles()
     {
