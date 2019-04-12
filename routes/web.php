@@ -23,4 +23,14 @@ Route::get('/profile/{id}', function ($id) {
 Route::get('/roles/{role}', function (\App\Role $role) {
     return view('roles', compact('role'));
 });
+Route::get('/country/{country}', function (\App\Country $country) {
+//    return $country->user()->with('articles')->get();
+//    $articles = $country->user()->with('articles')
+//        ->get()
+//        ->pluck('articles')
+//        ->collapse();
+//    dd($articles);
+    $country->load( 'articles.user'); //for eger loading && maintain n+1 problem
+    return view('country-article', compact('country'));
+});
 
