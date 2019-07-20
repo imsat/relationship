@@ -14,6 +14,10 @@ class Country extends Model
     }
     public function articles()
     {
-        return $this->hasManyThrough('App\Article', 'App\User', 'country_id', 'user_id');
+        return $this->hasManyThrough(
+            'App\Article',
+            'App\User',
+            'country_id',
+            'user_id');
     }
 }

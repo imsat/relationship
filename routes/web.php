@@ -12,6 +12,22 @@
 */
 
 Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/category/{category}/subcategories', function (\App\Category $category) {
+    $subcategories = $category->subCategories()->orderBy('id', 'DESC')->get();
+    $products = $category->products()->orderBy('id', 'DESC')->get();
+    return view('sub-categories', compact('subcategories', 'products'));
+})->name('category.subcategories');
+
+
+Route::get('/subcategory/{subcategory}/products', function (\App\SubCategory $subcategory) {
+    $products = $subcategory->products()->orderBy('id', 'DESC')->get();
+    return view('products', compact('products'));
+})->name('subcategory.products');
+
+Route::get('/articles', function () {
     $articles = \App\Article::with('user')->get();
     return view('articles', compact('articles'));
 });
@@ -28,12 +44,12 @@ Route::get('/roles/{role}', function (\App\Role $role) {
     return view('roles', compact('role'));
 });
 Route::get('/country/{country}', function (\App\Country $country) {
-//    return $country->user()->with('articles')->get();
+//    $country->user()->with('articles')->get();
 //    $articles = $country->user()->with('articles')
 //        ->get()
 //        ->pluck('articles')
 //        ->collapse();
-//    dd($articles);
+//    dd($country);
     $country->load( 'articles.user'); //for eger loading && maintain n+1 problem
     return view('country-article', compact('country'));
 });
